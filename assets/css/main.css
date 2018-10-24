@@ -1,0 +1,10 @@
+*{
+	margin:0px;
+	padding:0px;
+}
+#slider-range,#slider{
+	height:10px;
+	width:200px;
+	margin:20px auto;
+	background-color:red;
+}

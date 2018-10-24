@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>JQuery UI Slider</title>
+	<meta name='viewport' content="width=device-width,initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.css" />
+	<link rel="stylesheet" href="./assets/css/main.css">
+	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+ 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.js"></script>
+</head>
+<body>
+
+	<div id="slider"></div>
+	<div id="slider-range"></div>
+
+ 
+<script>
+$('#slider').slider({
+	animate: "fast",
+	min: 0,
+	max: 100,
+	step: 1,
+	value:0,
+	slidechange: function(event, ui){
+		var value = $("#slider").slider('instance');
+		console.log(value.options.values);
+		// console.log(event);contains all the information of the event
+		// console.log(ui);contains handle handle index and value ie the existing value of the slider
+	},
+	slide:function(event, ui){
+		var name = $('#slider').slider('instance');
+		console.log(name.options.value);
+		console.log(ui.value);
+	},
+	stop:function(event, ui){
+		// console.log(event);
+		// console.log(ui);
+		var stopped = $('#slider').slider('instance');
+		console.log('stopped '+stopped.options.value+'UI value'+ ui.value);
+	}
+})
+$( "#slider-range" ).slider({
+	animate: "fast",
+	min: 0,
+	max: 100,
+	range: true,
+	step: 1,
+	// value: 10, works if there is only one slider or range is disabled 
+	values: [20, 80],
+	slidechange: function(event, ui){
+		var value1 = $("#slider-range").slider('instance');
+		console.log(value1.options);
+		console.log(ui.value)
+		// console.log(event);contains all the information of the event
+		// console.log(ui);contains handle handle index and value ie the existing value of the slider
+		//**** use ui rahter than instance 
+	},
+	slide:function(event, ui){
+		var name1 = $('#slider-range').slider('instance');
+		console.log(name1.options.value);
+		console.log(ui.value);
+	},
+	stop:function(event, ui){
+		// console.log(event);
+		// console.log(ui);
+		var stopped1 = $('#slider-range').slider('instance');
+		console.log('stopped '+stopped1.options.values[0]+'UI value'+ ui.value);
+		console.log('stopped '+stopped1.options.values[1]+'UI value'+ ui.value);
+		console.log(stopped1.options)
+		console.log(ui.value)
+	}
+});
+
+
+
+</script>
+</body>
+</html>
